@@ -335,12 +335,12 @@ def main() -> None:
     if player_match is not None:
         fact_player_match = (
             player_match.alias("pm").join(dim_player.alias("p"), F.col("pm.player_name") == F.col("p.player_name"), "left")
-            .join(dim_team.alias("t").withColumnRenamed("team_id", "team_id_pm").withColumnRenamed("team_name", "team_name_pm"), F.col("pm.team") == F.col("t.team_name"), "left")
+            .join(dim_team.alias("t"), F.col("pm.team") == F.col("t.team_name"), "left")
             .join(dim_date_match.alias("dm").withColumnRenamed("date_id", "match_date_id"), F.col("pm.match_date") == F.col("dm.date"), "left")
             .select(
                 F.col("pm.match_id"),
                 F.col("match_date_id"),
-                F.col("team_id_pm").alias("team_id"),
+                F.col("t.team_id").alias("team_id"),
                 F.col("p.player_id"),
                 F.col("p.position"),
                 F.col("pm.minutes"),

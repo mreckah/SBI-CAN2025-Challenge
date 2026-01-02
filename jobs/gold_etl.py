@@ -60,6 +60,14 @@ def write_jdbc(df: DataFrame, table: str, mode: str = "overwrite") -> None:
     print(f"[WRITE-OK] {PG_SCHEMA}.{table}")
 
 
+def cleanup_hdfs_files() -> None:
+    """Clean up HDFS data files after successful PostgreSQL write (optional)"""
+    print("[CLEANUP] HDFS cleanup skipped - data remains in HDFS for debugging")
+    print("[CLEANUP] To manually clean HDFS, run: docker exec namenode hdfs dfs -rm -f /data/*.csv")
+    # Note: HDFS cleanup is optional since Spark container doesn't have hdfs command
+    # Data can be cleaned manually if needed: docker exec namenode hdfs dfs -rm -f /data/*.csv
+
+
 def main() -> None:
     spark = (
         SparkSession.builder.appName("can2025-gold-etl")
@@ -77,11 +85,15 @@ def main() -> None:
     smoke = spark.createDataFrame([(1, "ok")], ["id", "status"])
     write_jdbc(smoke, "_smoke_test", mode="overwrite")
 
+    # Load source data from HDFS
     matches = read_csv_optional(spark, "can2025_matches.csv")
-    attendance = read_csv_optional(spark, "can2025_match_attendance.csv")
+    player_match = read_csv_optional(spark, "can2025_player_match_stats.csv")
+    players_detailed = read_csv_optional(spark, "players_detailed_stats.csv")
     team_kpis = read_csv_optional(spark, "can2025_team_kpis.csv")
     marketing = read_csv_optional(spark, "can2025_marketing_daily.csv")
-    player_match = read_csv_optional(spark, "can2025_player_match_stats.csv")
+    attendance = read_csv_optional(spark, "can2025_match_attendance.csv")
+    stadium_performance = read_csv_optional(spark, "can2026_stadium_performance.csv")
+    marketing_impact = read_csv_optional(spark, "can2026_marketing_impact.csv")
     group_standings_raw = read_csv_optional(spark, "group_standings_raw.csv")
     players_snapshot = read_csv_optional(spark, "players_detailed_stats.csv")
 
@@ -462,6 +474,9 @@ def main() -> None:
         write_jdbc(writes[table], table)
 
     print("[DONE] Gold load complete")
+
+    # Clean up HDFS files after successful PostgreSQL load
+    cleanup_hdfs_files()
 
     spark.stop()
 

@@ -442,32 +442,20 @@ def main() -> None:
     else:
         players_snapshot_gold = spark.createDataFrame([], schema=T.StructType([]))
 
+    # Load exactly 8 core tables to PostgreSQL (including marketing for the dashboard)
     writes: Dict[str, DataFrame] = {
         "dim_team": dim_team,
-        "dim_stadium": dim_stadium,
-        "dim_referee": dim_referee,
         "dim_date": dim_date_match,
         "fact_matches": fact_matches,
-        "fact_attendance": fact_attendance,
         "fact_team_kpis": fact_team_kpis,
         "bigtable_gold": bigtable_gold,
+        "dim_channel": dim_channel if marketing is not None else spark.createDataFrame([], schema=T.StructType([])),
+        "dim_campaign": dim_campaign if marketing is not None else spark.createDataFrame([], schema=T.StructType([])),
+        "fact_marketing": fact_marketing if marketing is not None else spark.createDataFrame([], schema=T.StructType([])),
     }
 
-    if marketing is not None:
-        writes["dim_channel"] = dim_channel
-        writes["dim_campaign"] = dim_campaign
-        writes["dim_date_marketing"] = dim_date_marketing
-        writes["fact_marketing"] = fact_marketing
+    # Removed: dim_stadium, dim_referee, fact_attendance (data available in bigtable_gold)
 
-    if player_match is not None:
-        writes["dim_player"] = dim_player
-        writes["fact_player_match"] = fact_player_match
-
-    if group_standings_raw is not None:
-        writes["group_standings"] = group_standings
-
-    if players_snapshot is not None:
-        writes["players_snapshot"] = players_snapshot_gold
 
     for table in sorted(writes.keys()):
         print(f"[PREPARE] Writing table: {table}, rows: {writes[table].count() if writes[table] else 0}")

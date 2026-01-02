@@ -1,53 +1,47 @@
-version: '3.8'
-
 services:
   namenode:
-      image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
-      container_name: namenode
-      environment:
-        - CLUSTER_NAME=can2025
-        - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-        - HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
-        - HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
-        - HDFS_NAMENODE_USER=root
-        - HDFS_DATANODE_USER=root
-        - HDFS_SECONDARYNAMENODE_USER=root
-        - YARN_RESOURCEMANAGER_USER=root
-        - YARN_NODEMANAGER_USER=root
-      volumes:
-        - hadoop_namenode:/hadoop/dfs/name
-      ports:
-        - "9870:9870"  # HDFS Web UI
-        - "9000:9000"  # HDFS NameNode
-      networks:
-        - hadoop-net
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:9870/"]
-        interval: 30s
-        timeout: 10s
-        retries: 3
-        start_period: 60s
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    environment:
+      - CLUSTER_NAME=can2025
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
+      - HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+      - HDFS_SECONDARYNAMENODE_USER=root
+      - YARN_RESOURCEMANAGER_USER=root
+      - YARN_NODEMANAGER_USER=root
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    ports:
+      - "9870:9870"  # HDFS Web UI
+      - "9000:9000"  # HDFS NameNode
+    networks:
+      - hadoop-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9870/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   datanode:
-      image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-      container_name: datanode
-      depends_on:
-        namenode:
-          condition: service_healthy
-      environment:
-        - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-        - HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
-        - HDFS_NAMENODE_USER=root
-        - HDFS_DATANODE_USER=root
-      volumes:
-        - hadoop_datanode:/hadoop/dfs/data
-      networks:
-        - hadoop-net
-      deploy:
-        resources:
-          limits:
-            cpus: '1'
-            memory: 1G
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    depends_on:
+      namenode:
+        condition: service_healthy
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    networks:
+      - hadoop-net
+
   zookeeper:
     image: zookeeper:3.8.1
     restart: always
@@ -83,6 +77,28 @@ services:
           cpus: '1'
           memory: 1G
 
+  data-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: data-pipeline
+    depends_on:
+      kafka:
+        condition: service_started
+      namenode:
+        condition: service_healthy
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - KAFKA_TOPIC=can2025_data_files
+      - LOCAL_DATA_DIR=/data
+      - HDFS_URL=http://namenode:9870
+      - HDFS_DIR=/data
+    volumes:
+      - ./data:/data:ro
+    networks:
+      - kafka-net
+      - hadoop-net
+
   spark-master:
     image: apache/spark:3.4.1
     command: >
@@ -93,8 +109,12 @@ services:
       - "7077:7077"  # Spark Master
     environment:
       - SPARK_MASTER_HOST=spark-master
+    volumes:
+      - ./jobs:/jobs:ro
     networks:
       - spark-net
+      - hadoop-net
+      - db-net
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/"]
       interval: 30s
@@ -113,6 +133,8 @@ services:
       - SPARK_WORKER_MEMORY=2g
     networks:
       - spark-net
+      - hadoop-net
+      - db-net
     deploy:
       replicas: 2
       resources:

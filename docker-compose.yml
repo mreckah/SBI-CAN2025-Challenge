@@ -109,6 +109,12 @@ services:
       - "7077:7077"  # Spark Master
     environment:
       - SPARK_MASTER_HOST=spark-master
+      - PG_HOST=postgres
+      - PG_PORT=5432
+      - PG_DB=${POSTGRES_DB:-can2025_gold}
+      - PG_USER=${POSTGRES_USER:-admin}
+      - PG_PASSWORD=${POSTGRES_PASSWORD:-password123}
+      - PG_SCHEMA=gold
     volumes:
       - ./jobs:/jobs:ro
     networks:
@@ -131,6 +137,12 @@ services:
     environment:
       - SPARK_WORKER_CORES=2
       - SPARK_WORKER_MEMORY=2g
+      - PG_HOST=postgres
+      - PG_PORT=5432
+      - PG_DB=${POSTGRES_DB:-can2025_gold}
+      - PG_USER=${POSTGRES_USER:-admin}
+      - PG_PASSWORD=${POSTGRES_PASSWORD:-password123}
+      - PG_SCHEMA=gold
     networks:
       - spark-net
       - hadoop-net

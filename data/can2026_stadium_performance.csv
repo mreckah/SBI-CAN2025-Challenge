@@ -1,0 +1,7 @@
+stadium_name,city,capacity,matches_played,total_attendance,avg_occupancy_pct,ticket_revenue_usd,hospitality_revenue_usd,concession_spend_pg
+Grand Stade de Tanger,Tangier,75600,8,552300,91.3,18115440,2450000,4.20
+Prince Moulay Abdellah,Rabat,68700,8,518400,94.3,17003520,3100000,5.10
+Stade Mohammed V,Casablanca,67000,8,485600,90.6,15927680,2100000,4.80
+Complex Sportif de Fes,Fes,45000,6,238500,88.3,7822800,950000,3.50
+Grand Stade de Marrakech,Marrakech,45240,6,248100,91.4,8137680,1200000,4.60
+Grand Stade d'Agadir,Agadir,45480,6,215200,78.9,7058560,880000,3.90

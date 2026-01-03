@@ -1,0 +1,259 @@
+Player_Name,Country,Age,Position,Goals,Assists,Minutes_Played,Matches_Played,Pass_Accuracy,Distance_Run_km,Sprint_Speed_kmh,Tackles,Interceptions,Saves,Clean_Sheets,Yellow_Cards,Red_Cards,Performance_Rating
+Mohamed Salah,Egypt,33,Forward,2,1,270,3,84.5,32.4,34.2,4,2,0,0,0,0,8.9
+Achraf Hakimi,Morocco,27,Defender,0,2,270,3,88.2,36.8,35.8,12,8,0,1,1,0,8.7
+Victor Osimhen,Nigeria,26,Forward,3,0,240,3,78.3,28.6,33.9,2,1,0,0,0,0,9.2
+Youssef En-Nesyri,Morocco,28,Forward,2,1,225,3,76.8,26.4,32.7,3,0,0,0,1,0,8.4
+Brahim Diaz,Morocco,26,Midfielder,1,2,255,3,86.7,30.2,31.5,5,4,0,0,0,0,8.6
+Riyad Mahrez,Algeria,34,Forward,1,1,240,3,82.4,27.8,30.8,3,2,0,0,0,0,8.1
+Sebastien Haller,Ivory Coast,31,Forward,2,0,210,3,75.6,24.3,31.2,2,1,0,0,1,0,8.3
+Edouard Mendy,Senegal,33,Goalkeeper,0,0,270,3,78.5,12.4,24.6,0,0,8,2,0,0,8.8
+Kalidou Koulibaly,Senegal,34,Defender,0,0,270,3,91.3,33.5,29.4,14,11,0,2,0,0,8.9
+Sadio Mane,Senegal,33,Forward,1,2,255,3,81.2,31.8,32.5,4,3,0,0,0,0,8.5
+Yves Bissouma,Mali,28,Midfielder,0,1,240,2,87.6,29.4,32.1,9,7,0,0,2,0,7.8
+Amadou Haidara,Mali,27,Midfielder,1,0,225,3,85.3,31.7,33.2,8,5,0,0,1,0,8.2
+Nene Dorgeles,Mali,26,Forward,2,1,210,3,79.4,27.9,33.6,3,2,0,0,0,0,8.4
+Alex Iwobi,Nigeria,28,Midfielder,0,2,240,3,83.8,30.6,31.8,5,4,0,0,1,0,8.0
+Ademola Lookman,Nigeria,27,Forward,2,1,225,3,80.5,28.3,34.5,2,1,0,0,0,0,8.7
+Calvin Bassey,Nigeria,25,Defender,0,0,270,3,86.4,34.2,32.8,10,9,0,1,1,0,8.3
+Samuel Chukwueze,Nigeria,26,Forward,1,0,195,3,77.8,25.7,33.4,2,1,0,0,0,0,7.6
+Bryan Mbeumo,Cameroon,25,Forward,1,1,240,3,81.6,29.5,33.8,3,2,0,0,0,0,8.1
+Andre Onana,Cameroon,29,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Frank Anguissa,Cameroon,29,Midfielder,0,1,255,3,88.4,32.1,31.4,11,6,0,0,1,0,8.4
+Vincent Aboubakar,Cameroon,32,Forward,1,0,180,2,74.2,22.8,30.5,1,0,0,0,0,0,7.5
+Christian Kofane,Cameroon,19,Defender,1,0,165,2,82.1,21.4,33.9,6,4,0,0,1,0,7.8
+Nicolas Pepe,Algeria,30,Forward,1,1,210,3,79.6,26.8,32.3,2,2,0,0,0,0,7.9
+Ramy Bensebaini,Algeria,30,Defender,0,1,270,3,87.9,35.4,31.7,13,10,0,1,1,0,8.5
+Ismael Bennacer,Algeria,27,Midfielder,0,0,225,3,89.2,31.8,30.9,7,5,0,0,2,0,7.7
+Simon Adingra,Ivory Coast,23,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Ibrahim Sangare,Ivory Coast,27,Midfielder,0,0,240,3,86.5,32.4,31.6,9,6,0,0,1,0,8.0
+Franck Kessie,Ivory Coast,28,Midfielder,1,1,255,3,85.7,33.2,32.4,10,7,0,0,1,0,8.6
+Jean-Philippe Krasso,Ivory Coast,28,Forward,1,0,180,2,76.3,23.5,31.8,2,1,0,0,0,0,7.4
+Yan Diomande,Ivory Coast,21,Midfielder,0,1,165,2,83.4,24.6,32.7,4,3,0,0,0,0,7.6
+Wilfried Singo,Ivory Coast,24,Defender,0,0,240,3,84.8,33.8,34.1,8,7,0,0,2,0,7.9
+Serge Aurier,Ivory Coast,32,Defender,0,0,225,3,85.2,31.6,30.2,9,6,0,1,1,0,7.8
+Omar Marmoush,Egypt,25,Forward,1,1,225,3,80.4,28.9,34.6,3,2,0,0,0,0,8.5
+Mohamed Elneny,Egypt,33,Midfielder,0,0,240,3,88.6,30.5,29.8,6,5,0,0,1,0,7.9
+Mahmoud Trezeguet,Egypt,30,Forward,0,1,195,2,78.9,25.3,32.1,2,1,0,0,0,0,7.3
+Ahmed Hegazy,Egypt,34,Defender,0,0,270,3,89.4,32.7,28.6,11,8,0,2,0,0,8.2
+Mohamed Abou Gabal,Egypt,33,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Hamza Alaa,Egypt,27,Defender,0,0,180,2,86.3,27.8,31.2,7,5,0,0,1,0,7.5
+Pape Matar Sarr,Senegal,22,Midfielder,0,1,225,3,84.7,30.8,33.5,7,4,0,0,1,0,8.1
+Idrissa Gueye,Senegal,35,Midfielder,0,0,255,3,87.3,32.6,30.1,12,8,0,0,2,0,8.4
+Ismaila Sarr,Senegal,27,Forward,2,0,240,3,79.2,29.7,34.8,3,2,0,0,0,0,8.6
+Boulaye Dia,Senegal,28,Forward,1,1,210,3,77.5,27.4,32.9,2,1,0,0,0,0,8.0
+Habib Diallo,Senegal,29,Forward,0,0,165,2,74.8,21.6,31.4,1,0,0,0,1,0,7.1
+Nicolas Jackson,Senegal,23,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Seny Dieng,Senegal,30,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Formose Mendy,Senegal,24,Defender,0,0,90,1,82.6,14.8,30.7,3,2,0,0,0,0,7.2
+Mikkel Damsgaard,Tunisia,24,Midfielder,1,0,210,3,83.5,28.4,32.3,4,3,0,0,0,0,7.8
+Youssef Msakni,Tunisia,34,Forward,0,1,195,3,76.4,24.9,30.4,2,1,0,0,1,0,7.4
+Montassar Talbi,Tunisia,31,Defender,0,0,270,3,88.7,34.6,30.8,12,9,0,1,1,0,8.3
+Ali Maaloul,Tunisia,35,Defender,0,1,255,3,86.9,33.2,29.5,8,6,0,0,1,0,7.9
+Aissa Laidouni,Tunisia,28,Midfielder,0,0,240,3,85.8,31.4,31.8,9,5,0,0,2,0,7.7
+Ben Said,Tunisia,29,Goalkeeper,0,0,270,3,76.8,13.2,23.8,0,0,7,1,0,0,8.1
+Wahbi Khazri,Tunisia,34,Forward,1,0,165,2,79.7,22.5,30.2,1,1,0,0,0,0,7.3
+Ellyes Skhiri,Tunisia,30,Midfielder,0,1,225,3,87.2,30.9,31.5,8,6,0,0,1,0,8.0
+Bertrand Traore,Burkina Faso,29,Forward,2,1,225,3,80.8,28.1,32.6,3,2,0,0,0,0,8.5
+Edmond Tapsoba,Burkina Faso,26,Defender,0,0,270,3,89.6,35.2,32.1,13,11,0,2,0,0,8.7
+Issa Kabore,Burkina Faso,24,Defender,0,1,255,3,85.4,34.8,33.7,9,7,0,0,1,0,8.2
+Blati Toure,Burkina Faso,33,Midfielder,0,0,210,3,86.3,29.7,30.4,6,4,0,0,1,0,7.5
+Dango Ouattara,Burkina Faso,23,Forward,1,1,240,3,78.6,29.3,34.2,4,2,0,0,0,0,8.3
+Lassina Traore,Burkina Faso,24,Forward,1,0,195,2,75.9,25.4,33.8,2,1,0,0,0,0,7.7
+Cedric Badolo,Burkina Faso,30,Midfielder,0,0,180,2,84.7,26.8,31.2,5,3,0,0,1,0,7.4
+Steeve Yago,Burkina Faso,34,Defender,0,0,225,3,87.1,32.4,29.8,10,6,0,1,2,0,7.6
+Herve Koffi,Burkina Faso,28,Goalkeeper,0,0,270,3,79.2,14.1,24.5,0,0,6,1,0,0,7.9
+Ibrahima Sangare,Burkina Faso,27,Midfielder,0,1,240,3,88.5,32.7,31.9,10,7,0,0,1,0,8.1
+Percy Tau,South Africa,31,Forward,1,2,240,3,81.7,29.4,32.8,3,2,0,0,0,0,8.4
+Themba Zwane,South Africa,35,Midfielder,0,1,210,2,83.9,27.6,30.6,4,3,0,0,1,0,7.7
+Ronwen Williams,South Africa,33,Goalkeeper,0,0,270,3,81.4,13.8,25.2,0,0,9,2,0,0,8.9
+Khuliso Mudau,South Africa,30,Defender,0,0,255,3,84.2,33.9,32.5,8,6,0,1,1,0,7.8
+Teboho Mokoena,South Africa,28,Midfielder,1,0,240,3,86.8,31.5,31.7,7,5,0,0,1,0,8.2
+Evidence Makgopa,South Africa,24,Forward,0,0,165,2,73.6,21.9,31.8,1,0,0,0,0,0,7.1
+Sphephelo Sithole,South Africa,25,Midfielder,0,0,195,2,85.3,28.3,32.1,6,4,0,0,0,0,7.5
+Grant Margeman,South Africa,22,Midfielder,0,1,180,2,82.4,26.7,32.9,3,2,0,0,0,0,7.4
+Mothobi Mvala,South Africa,30,Defender,0,0,240,3,88.3,33.6,30.9,11,8,0,1,1,0,8.0
+Selaelo Rasebotja,South Africa,23,Forward,1,0,150,2,76.8,20.4,33.4,2,1,0,0,0,0,7.3
+Tawanda Chirewa,Zimbabwe,21,Midfielder,0,1,225,3,82.6,29.1,32.6,5,4,0,0,1,0,7.7
+Khama Billiat,Zimbabwe,35,Forward,1,0,195,2,78.4,24.8,30.2,2,1,0,0,0,0,7.4
+Washington Arubi,Zimbabwe,37,Goalkeeper,0,0,270,3,77.6,12.9,23.4,0,0,6,1,0,0,7.6
+Teenage Hadebe,Zimbabwe,29,Defender,0,0,270,3,86.7,34.3,31.4,12,9,0,1,2,0,8.1
+Tendayi Darikwa,Zimbabwe,33,Defender,0,0,255,3,85.1,33.7,30.8,8,6,0,0,1,0,7.7
+Daniel Msendami,Zimbabwe,24,Midfielder,0,0,180,2,83.2,26.4,31.9,4,3,0,0,0,0,7.2
+Jordan Zemura,Zimbabwe,25,Defender,0,1,240,3,84.6,32.8,32.3,7,5,0,0,1,0,7.9
+Macauley Bonne,Zimbabwe,29,Forward,0,0,135,2,72.3,18.6,30.6,1,0,0,0,0,0,6.8
+Admiral Muskwe,Zimbabwe,26,Forward,0,0,90,1,69.8,13.2,31.2,0,0,0,0,0,0,6.5
+Tino Kadewere,Zimbabwe,29,Forward,1,0,210,3,77.9,26.3,32.1,2,1,0,0,0,0,7.6
+Gelson Dala,Angola,28,Forward,2,0,225,3,79.3,27.6,33.2,3,2,0,0,0,0,8.3
+Fredy,Angola,30,Midfielder,0,2,240,3,85.9,31.4,31.8,6,5,0,0,1,0,8.1
+Mabululu,Angola,28,Forward,1,1,210,3,76.4,26.9,32.5,2,1,0,0,0,0,7.8
+Herenilson,Angola,31,Defender,0,0,270,3,87.2,34.8,30.7,11,8,0,1,1,0,8.2
+Kialonda Gaspar,Angola,29,Defender,0,0,270,3,88.5,35.1,31.2,12,10,0,2,0,0,8.4
+Neblu,Angola,32,Goalkeeper,0,0,270,3,78.9,13.6,24.1,0,0,7,1,0,0,8.0
+Show,Angola,30,Midfielder,0,1,225,3,84.6,30.7,31.5,7,4,0,0,1,0,7.7
+Zini,Angola,26,Forward,0,0,165,2,74.8,22.1,32.8,1,1,0,0,0,0,7.2
+Maestro,Angola,33,Midfielder,0,0,195,2,86.4,28.5,30.3,5,3,0,0,2,0,7.4
+Bruno Paz,Angola,25,Midfielder,1,0,180,2,83.7,27.2,32.1,4,3,0,0,0,0,7.6
+Gilberto,Angola,32,Forward,1,0,195,3,77.1,25.8,31.6,2,1,0,0,1,0,7.5
+El Bilal Toure,Mali,23,Forward,1,1,195,3,78.9,26.4,34.1,2,1,0,0,0,0,8.0
+Lassana Coulibaly,Mali,28,Midfielder,0,0,240,3,87.8,32.3,31.7,9,6,0,0,1,0,8.1
+Kamory Doumbia,Mali,21,Midfielder,1,1,180,2,82.5,26.9,32.8,3,2,0,0,0,0,7.8
+Aliou Dieng,Mali,27,Midfielder,0,1,225,3,86.2,31.8,32.1,8,5,0,0,1,0,7.9
+Djigui Diarra,Mali,25,Goalkeeper,0,0,270,3,80.3,13.9,24.8,0,0,8,2,0,0,8.3
+Sikou Niakate,Mali,29,Defender,0,0,255,3,88.9,34.7,31.3,11,9,0,1,1,0,8.2
+Hamari Traore,Mali,33,Defender,0,1,240,3,86.4,33.4,30.5,9,7,0,0,2,0,7.8
+Mamadou Fofana,Mali,26,Defender,0,0,225,2,85.7,32.1,31.8,8,6,0,0,1,0,7.7
+Mahamadou Doumbia,Mali,22,Midfielder,0,0,165,2,83.6,25.7,32.4,4,3,0,0,0,0,7.4
+Lassine Sinayoko,Mali,24,Forward,0,0,150,2,75.3,20.8,32.9,1,1,0,0,0,0,7.1
+Carlos Baleba,Cameroon,21,Midfielder,0,1,225,3,84.8,30.4,32.7,8,5,0,0,1,0,8.0
+Nouhou Tolo,Cameroon,28,Defender,0,0,255,3,83.9,34.2,32.1,10,7,0,0,2,0,7.8
+Michael Ngadeu,Cameroon,34,Defender,0,0,270,3,89.1,34.9,29.8,13,10,0,2,0,0,8.3
+Karl Toko Ekambi,Cameroon,32,Forward,1,0,210,3,77.6,27.2,31.4,2,1,0,0,0,0,7.7
+Moumi Ngamaleu,Cameroon,31,Forward,0,1,180,2,76.8,24.5,31.8,2,1,0,0,0,0,7.3
+Fabrice Ondoa,Cameroon,30,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Georges-Kevin Nkoudou,Cameroon,29,Forward,0,0,135,2,74.2,19.3,32.1,1,0,0,0,0,0,6.9
+Jean Onana,Cameroon,25,Midfielder,0,0,195,2,85.4,28.9,31.6,6,4,0,0,1,0,7.6
+Youssouf Ndayishimiye,Burundi,30,Midfielder,0,0,240,3,83.7,30.2,31.3,7,5,0,0,1,0,7.5
+Jonathan Nahimana,Burundi,25,Goalkeeper,0,0,270,3,75.4,12.7,23.6,0,0,5,0,0,0,7.3
+Saido Berahino,Burundi,32,Forward,1,0,195,2,76.2,25.1,30.8,2,1,0,0,0,0,7.4
+Gael Bigirimana,Burundi,31,Midfielder,0,1,225,3,84.9,29.6,30.9,6,4,0,0,2,0,7.6
+Frederic Nsabiyumva,Burundi,29,Defender,0,0,270,3,86.3,33.8,31.1,9,7,0,1,1,0,7.7
+Shassiri Nahimana,Burundi,27,Defender,0,0,255,3,85.6,33.2,31.6,8,6,0,0,1,0,7.6
+Bienvenu Kanakimana,Burundi,23,Midfielder,0,0,180,2,82.4,26.5,32.1,4,3,0,0,0,0,7.2
+Abdallah Sudi,Burundi,26,Forward,0,0,165,2,73.8,22.4,31.9,1,1,0,0,0,0,7.0
+Mudathir Yahaya,Tanzania,29,Forward,1,0,210,3,77.4,26.8,32.4,2,1,0,0,0,0,7.6
+Simon Msuva,Tanzania,30,Forward,1,1,225,3,78.8,28.3,31.9,3,2,0,0,0,0,7.9
+Aishi Manula,Tanzania,29,Goalkeeper,0,0,270,3,76.8,13.1,24.3,0,0,6,1,0,0,7.7
+Kelvin Yondani,Tanzania,24,Defender,0,0,240,3,84.2,32.9,31.8,9,7,0,0,1,0,7.7
+Novatus Miroshi,Tanzania,26,Midfielder,0,1,225,3,83.6,29.7,31.5,5,4,0,0,1,0,7.5
+Feisal Salum,Tanzania,28,Midfielder,0,0,195,2,82.9,27.4,31.2,4,3,0,0,0,0,7.3
+Mbwana Samatta,Tanzania,32,Forward,0,0,180,2,75.6,23.9,30.6,1,0,0,0,1,0,7.1
+Charles Mwankemwa,Tanzania,27,Defender,0,0,255,3,85.9,33.5,31.4,10,8,0,1,1,0,7.8
+Yohana Temba,Tanzania,25,Midfielder,0,0,150,2,81.7,23.8,32.3,3,2,0,0,0,0,7.1
+Haji Mnoga,Tanzania,23,Forward,0,0,120,1,72.4,17.6,32.8,1,0,0,0,0,0,6.7
+Andres Hountondji,Benin,31,Forward,1,0,210,3,77.9,26.5,31.7,2,1,0,0,0,0,7.7
+Steve Mounie,Benin,30,Forward,1,1,225,3,78.4,27.8,32.1,3,2,0,0,0,0,8.0
+Saturnin Allagbe,Benin,27,Goalkeeper,0,0,270,3,77.2,13.4,24.6,0,0,7,1,0,0,7.9
+Olivier Verdon,Benin,29,Defender,0,0,270,3,87.6,34.6,30.9,11,8,0,1,1,0,8.1
+Matteo Ahlinvi,Benin,24,Midfielder,0,1,225,3,84.1,29.8,31.8,6,4,0,0,1,0,7.6
+Sessi D'Almeida,Benin,28,Midfielder,0,0,240,3,85.3,31.2,31.4,7,5,0,0,1,0,7.7
+Junior Olaitan,Benin,29,Forward,0,0,165,2,74.6,22.7,31.5,1,1,0,0,0,0,7.1
+Stephane Sessegnon,Benin,40,Midfielder,0,0,135,2,83.2,21.4,28.9,3,2,0,0,0,0,7.0
+Youssouf Assogba,Benin,31,Defender,0,0,255,3,86.2,33.4,30.7,9,7,0,0,2,0,7.6
+Rachid Moumini,Benin,26,Defender,0,0,225,2,84.8,31.6,31.3,8,6,0,0,1,0,7.5
+Oussama Targhalline,Morocco,28,Midfielder,0,1,225,3,86.9,31.6,31.9,7,5,0,0,1,0,8.0
+Bilal El Khannouss,Morocco,21,Midfielder,1,1,210,3,85.3,29.4,32.6,5,4,0,0,0,0,8.2
+Eliesse Ben Seghir,Morocco,20,Forward,0,0,90,1,78.6,15.8,33.4,1,0,0,0,0,0,7.1
+Ayoub El Kaabi,Morocco,31,Forward,3,0,240,3,77.4,27.3,32.2,3,1,0,0,0,0,8.8
+Yassine Bounou,Morocco,34,Goalkeeper,0,0,270,3,81.7,14.2,25.1,0,0,8,2,0,0,8.6
+Nayef Aguerd,Morocco,29,Defender,0,0,270,3,89.7,35.6,31.5,14,11,0,2,0,0,8.8
+Noussair Mazraoui,Morocco,27,Defender,0,1,270,3,88.1,35.3,32.4,11,9,0,1,1,0,8.5
+Azzedine Ounahi,Morocco,25,Midfielder,0,0,195,2,84.7,28.1,31.7,5,3,0,0,1,0,7.5
+Sofyan Amrabat,Morocco,28,Midfielder,0,0,255,3,87.4,32.9,31.3,10,7,0,0,2,0,8.3
+Ilias Akhomach,Morocco,21,Forward,0,1,165,2,79.8,24.2,33.1,2,1,0,0,0,0,7.4
+Abde Ezzalzouli,Morocco,23,Forward,1,0,180,2,78.2,25.9,33.6,2,1,0,0,0,0,7.7
+Soufiane Rahimi,Morocco,28,Forward,0,0,135,2,75.3,19.7,31.8,1,0,0,0,0,0,6.9
+Hakim Ziyech,Morocco,32,Midfielder,0,0,120,1,82.4,18.3,30.4,2,1,0,0,0,0,7.0
+Yahia Attiyat Allah,Morocco,30,Defender,0,0,225,3,86.5,32.8,31.1,8,6,0,0,1,0,7.7
+Zakaria Aboukhlal,Morocco,25,Forward,1,1,195,3,79.6,26.7,32.9,2,1,0,0,0,0,7.8
+Moses Simon,Nigeria,29,Forward,0,1,210,3,80.2,28.5,33.1,3,2,0,0,0,0,7.9
+Ola Aina,Nigeria,28,Defender,0,1,255,3,85.7,34.1,32.6,9,7,0,0,1,0,8.1
+Semi Ajayi,Nigeria,31,Defender,0,0,270,3,88.5,34.8,30.9,12,10,0,1,1,0,8.2
+William Troost-Ekong,Nigeria,31,Defender,1,0,270,3,89.2,35.3,30.6,13,11,0,2,0,0,8.5
+Stanley Nwabali,Nigeria,28,Goalkeeper,0,0,270,3,80.6,13.9,24.9,0,0,9,2,0,0,8.7
+Wilfred Ndidi,Nigeria,28,Midfielder,0,0,240,3,87.9,32.4,31.6,11,8,0,0,2,0,8.3
+Raphael Onyedika,Nigeria,24,Midfielder,0,0,195,2,84.8,28.7,32.1,7,5,0,0,1,0,7.6
+Kelechi Iheanacho,Nigeria,28,Forward,1,0,180,2,76.9,24.6,31.8,2,1,0,0,0,0,7.5
+Paul Onuachu,Nigeria,30,Forward,0,0,135,2,74.1,19.2,30.9,1,0,0,0,0,0,7.0
+Terem Moffi,Nigeria,25,Forward,1,1,165,2,77.3,23.8,32.7,2,1,0,0,0,0,7.7
+Bright Osayi-Samuel,Nigeria,27,Defender,0,0,225,3,84.3,33.6,32.4,8,6,0,0,1,0,7.8
+Kenneth Omeruo,Nigeria,31,Defender,0,0,240,2,87.6,33.1,30.4,10,8,0,1,0,0,7.9
+Zaidu Sanusi,Nigeria,27,Defender,0,1,255,3,83.9,34.3,32.8,9,7,0,0,1,0,7.9
+Francis Uzoho,Nigeria,26,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Andre-Frank Zambo Anguissa,Cameroon,29,Midfielder,0,1,255,3,88.4,32.1,31.4,11,6,0,0,1,0,8.4
+Christopher Wooh,Cameroon,23,Defender,0,0,240,3,87.3,33.9,31.8,10,8,0,1,1,0,8.0
+Olivier Kemen,Cameroon,28,Midfielder,0,0,210,3,85.6,29.8,31.3,6,4,0,0,1,0,7.6
+Jean-Charles Castelletto,Cameroon,29,Defender,0,0,270,3,88.8,34.5,30.8,11,9,0,1,0,0,8.2
+Georges Mandjeck,Cameroon,32,Midfielder,0,0,180,2,84.2,26.9,30.5,5,3,0,0,1,0,7.3
+Jerome Ngom Mbekeli,Cameroon,22,Forward,0,0,120,1,73.6,17.4,32.4,1,0,0,0,0,0,6.8
+Darlin Yongwa,Cameroon,24,Defender,0,0,195,2,83.7,30.2,32.1,7,5,0,0,0,0,7.5
+Oumar Gonzalez,Cameroon,24,Defender,0,0,180,2,85.4,28.6,31.6,6,4,0,0,1,0,7.4
+Chancel Mbemba,Congo DR,30,Defender,0,0,270,3,88.9,35.4,31.1,13,10,0,2,1,0,8.6
+Yoane Wissa,Congo DR,28,Forward,2,1,240,3,79.8,28.9,33.4,3,2,0,0,0,0,8.6
+Cedric Bakambu,Congo DR,33,Forward,1,0,195,3,76.4,25.7,31.3,2,1,0,0,0,0,7.6
+Lionel Mpasi,Congo DR,25,Goalkeeper,0,0,270,3,79.8,14.1,24.7,0,0,8,2,0,0,8.4
+Arthur Masuaku,Congo DR,31,Defender,0,1,255,3,86.3,34.6,31.8,10,7,0,0,1,0,8.1
+Gael Kakuta,Congo DR,33,Midfielder,1,1,210,3,83.4,28.6,30.8,4,3,0,0,0,0,7.9
+Samuel Moutoussamy,Congo DR,28,Midfielder,0,0,225,3,85.9,30.9,31.5,7,5,0,0,1,0,7.8
+Theo Bongonda,Congo DR,29,Forward,0,1,180,2,77.8,25.3,32.6,2,1,0,0,0,0,7.5
+Meschack Elia,Congo DR,27,Forward,1,0,195,3,78.6,26.8,32.9,3,2,0,0,0,0,7.7
+Simon Banza,Congo DR,28,Forward,0,0,165,2,75.2,22.9,31.7,1,0,0,0,0,0,7.2
+Dylan Batubinsika,Congo DR,28,Defender,0,0,240,3,87.5,33.7,31.2,11,8,0,1,1,0,8.0
+Aaron Tshibola,Congo DR,29,Midfielder,0,0,180,2,84.6,27.5,31.4,5,3,0,0,1,0,7.3
+Charles Pickel,Congo DR,28,Midfielder,0,1,195,2,83.8,28.3,31.6,6,4,0,0,0,0,7.5
+Rocky Bushiri,Congo DR,25,Defender,0,0,210,2,86.2,32.4,31.9,8,6,0,0,1,0,7.6
+Jonathan David,Canada,25,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Alphonso Davies,Canada,24,Defender,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Cyle Larin,Canada,29,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Richarlison,Brazil,27,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Vinicius Junior,Brazil,24,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Neymar,Brazil,33,Forward,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Serhou Guirassy,Guinea,28,Forward,3,0,240,3,78.4,28.2,32.8,3,2,0,0,0,0,8.7
+Mohamed Bayo,Guinea,27,Forward,1,1,210,3,77.6,27.3,32.4,2,1,0,0,0,0,8.0
+Aly Keita,Guinea,38,Goalkeeper,0,0,0,0,0.0,0.0,0.0,0,0,0,0,0,0,0.0
+Ibrahim Kone,Guinea,25,Goalkeeper,0,0,270,3,78.4,13.7,24.5,0,0,7,1,0,0,7.9
+Mory Kone,Guinea,22,Defender,0,0,240,3,85.8,33.4,32.1,9,7,0,0,1,0,7.8
+Saidou Sow,Guinea,28,Defender,0,0,270,3,87.9,34.9,31.3,12,9,0,1,1,0,8.3
+Amadou Diawara,Guinea,27,Midfielder,0,1,240,3,86.7,31.6,31.5,8,6,0,0,1,0,8.1
+Naby Keita,Guinea,29,Midfielder,1,0,195,2,84.3,28.4,31.7,6,4,0,0,1,0,7.7
+Ilaix Moriba,Guinea,22,Midfielder,0,0,180,2,83.5,27.1,32.3,5,3,0,0,0,0,7.4
+Aguibou Camara,Guinea,24,Midfielder,0,1,210,3,82.9,29.3,31.9,5,4,0,0,1,0,7.7
+Julian Jeanvier,Guinea,32,Defender,0,0,255,3,88.2,34.2,30.6,11,8,0,1,1,0,8.0
+Issiaga Sylla,Guinea,32,Defender,0,0,225,3,85.6,33.1,30.8,9,7,0,0,1,0,7.7
+Morgan Guilavogui,Guinea,27,Forward,0,0,150,2,75.8,21.6,32.1,1,1,0,0,0,0,7.1
+Facinet Conte,Guinea,26,Midfielder,0,0,165,2,82.7,25.9,31.8,4,3,0,0,0,0,7.2
+Sekou Sylla,Guinea,24,Forward,1,0,135,2,74.9,19.8,32.6,1,0,0,0,0,0,7.0
+Lamine Camara,Senegal,21,Midfielder,0,0,195,2,83.8,28.6,32.4,6,4,0,0,1,0,7.7
+Krepin Diatta,Senegal,25,Forward,0,1,180,2,78.9,25.7,33.2,2,1,0,0,0,0,7.6
+Abdou Diallo,Senegal,29,Defender,0,0,240,3,87.6,34.3,31.1,10,8,0,1,1,0,8.2
+Iliman Ndiaye,Senegal,24,Forward,1,0,195,3,79.7,27.6,33.6,3,2,0,0,0,0,8.1
+Habib Diarra,Senegal,21,Midfielder,0,0,165,2,82.4,26.3,32.8,5,3,0,0,0,0,7.4
+Cheikhou Kouyate,Senegal,35,Midfielder,0,0,210,3,86.9,30.8,29.8,9,6,0,0,2,0,7.9
+Moussa Niakhate,Senegal,28,Defender,0,0,270,3,88.7,35.1,31.6,12,10,0,2,0,0,8.4
+Youssouf Sabaly,Senegal,32,Defender,0,1,255,3,85.9,34.4,31.2,9,7,0,0,1,0,8.0
+Nampalys Mendy,Senegal,32,Midfielder,0,0,180,2,85.7,27.8,30.6,6,4,0,0,1,0,7.5
+Moussa Djenepo,Mali,26,Forward,0,0,120,1,76.2,18.4,32.8,1,0,0,0,0,0,6.9
+Sekou Koita,Mali,25,Forward,0,0,90,1,73.8,14.7,32.4,0,0,0,0,0,0,6.6
+Boubacar Traore,Mali,24,Midfielder,0,0,150,2,82.9,24.8,31.9,4,3,0,0,0,0,7.3
+Massadio Haidara,Mali,32,Defender,0,0,225,3,86.1,33.8,30.7,10,7,0,0,2,0,7.8
+Falaye Sacko,Mali,29,Defender,0,1,240,3,84.7,33.6,31.4,8,6,0,0,1,0,7.8
+Boubacar Kiki Kouyate,Mali,35,Defender,0,0,255,3,89.3,34.6,29.5,13,10,0,2,1,0,8.1
+Amadou Dante,Mali,27,Defender,0,0,210,2,87.4,32.7,31.2,9,7,0,1,0,0,7.7
+Adama Traore,Mali,29,Forward,1,0,165,2,76.5,23.4,32.2,2,1,0,0,0,0,7.4
+Ivan Yagan,Ivory Coast,21,Forward,0,0,90,1,72.9,15.2,32.9,0,0,0,0,0,0,6.7
+Hassane Kamara,Ivory Coast,30,Defender,0,0,240,3,86.3,34.1,31.5,9,7,0,0,1,0,7.9
+Odilon Kossounou,Ivory Coast,24,Defender,0,0,270,3,88.6,35.3,32.3,12,10,0,2,0,0,8.5
+Ghislain Konan,Ivory Coast,29,Defender,0,1,225,3,85.1,33.7,31.6,8,6,0,0,1,0,7.8
+Seko Fofana,Ivory Coast,30,Midfielder,1,0,225,3,87.2,31.9,31.8,9,6,0,0,1,0,8.3
+Jean Michael Seri,Ivory Coast,33,Midfielder,0,1,195,2,86.8,28.7,30.5,6,4,0,0,1,0,7.6
+Yahia Fofana,Ivory Coast,24,Goalkeeper,0,0,270,3,79.6,14.3,24.8,0,0,8,2,0,0,8.2
+Nicolas Pepe,Ivory Coast,30,Forward,1,0,165,2,78.7,24.8,32.5,2,1,0,0,0,0,7.5
+Christian Kouame,Ivory Coast,27,Forward,0,0,120,1,74.6,18.9,31.7,1,0,0,0,0,0,6.8
+Evan Ndicka,Ivory Coast,25,Defender,0,0,255,3,87.9,34.7,31.9,11,9,0,1,1,0,8.3
+Max Gradel,Ivory Coast,37,Forward,0,0,75,1,71.4,12.3,29.5,0,0,0,0,0,0,6.4
+Omar Diakite,Guinea,23,Forward,0,0,105,1,73.2,16.8,32.1,1,0,0,0,0,0,6.8
+Mouctar Diakhaby,Guinea,28,Defender,0,0,225,3,87.3,33.9,31.4,10,8,0,1,1,0,7.9
+Ibrahima Sory Conte,Guinea,29,Defender,0,0,195,2,85.9,31.8,31.1,8,6,0,0,1,0,7.5
+Pa Konate,Guinea,26,Forward,0,0,90,1,74.1,15.4,31.9,0,0,0,0,0,0,6.6
+Antoine Conte,Guinea,28,Midfielder,0,0,135,2,81.6,22.7,31.3,3,2,0,0,0,0,7.0
+Mostafa Mohamed,Egypt,27,Forward,0,0,180,2,76.8,24.2,32.1,2,1,0,0,0,0,7.4
+Mohamed Hamdy,Egypt,28,Defender,0,0,195,2,85.7,30.4,31.3,7,5,0,0,1,0,7.5
+Emam Ashour,Egypt,25,Midfielder,0,1,210,3,84.9,29.7,31.8,6,4,0,0,1,0,7.7
+Karim Fouad,Egypt,29,Defender,0,0,180,2,84.3,29.1,31.1,7,5,0,0,1,0,7.4
+Marwan Attia,Egypt,24,Midfielder,0,0,165,2,83.6,26.5,31.9,4,3,0,0,0,0,7.3
+Zizo,Egypt,27,Forward,0,0,120,1,75.8,18.6,31.7,1,0,0,0,0,0,6.9
+Ahmed Fattouh,Egypt,25,Defender,0,0,195,2,86.1,31.2,31.6,8,6,0,0,0,0,7.6
+Mohamed Sherif,Egypt,28,Forward,1,0,150,2,76.3,22.1,31.8,1,1,0,0,0,0,7.2
+Ahmed Abo El Fotouh,Egypt,32,Goalkeeper,0,0,270,3,80.2,13.6,24.4,0,0,7,1,0,0,8.0
+Mostafa Fathi,Egypt,25,Midfielder,0,0,135,2,82.4,23.9,31.5,3,2,0,0,0,0,7.1
+Omar Kamal,Egypt,26,Defender,0,0,150,2,83.8,26.7,31.4,6,4,0,0,0,0,7.3
+Abdelrahman Magdy,Egypt,24,Defender,0,0,120,1,84.6,20.8,31.7,5,3,0,0,0,0,7.1

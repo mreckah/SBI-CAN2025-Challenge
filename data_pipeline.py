@@ -3,9 +3,9 @@ import json
 import os
 import time
 from pathlib import Path
-
 from hdfs import InsecureClient
 from kafka import KafkaConsumer, KafkaProducer
+from kafka.errors import NoBrokersAvailable
 
 
 def _env(name: str, default: str) -> str:
@@ -22,27 +22,47 @@ CLEANUP_HDFS = _env("CLEANUP_HDFS", "false").strip().lower() in {"1", "true", "y
 
 
 def get_producer() -> KafkaProducer:
-    return KafkaProducer(
-        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-        retries=5,
-        linger_ms=50,
-    )
+    for i in range(15):
+        try:
+            return KafkaProducer(
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+                retries=5,
+                linger_ms=50,
+            )
+        except NoBrokersAvailable:
+            print(f"Waiting for Kafka ({i+1}/15)...")
+            time.sleep(5)
+    raise RuntimeError("Kafka not available after retries")
 
 
 def get_consumer() -> KafkaConsumer:
-    return KafkaConsumer(
-        KAFKA_TOPIC,
-        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        auto_offset_reset="earliest",
-        enable_auto_commit=True,
-        group_id="data-pipeline-to-hdfs",
-        value_deserializer=lambda b: json.loads(b.decode("utf-8")),
-    )
+    for i in range(15):
+        try:
+            return KafkaConsumer(
+                KAFKA_TOPIC,
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                auto_offset_reset="earliest",
+                enable_auto_commit=True,
+                group_id="data-pipeline-to-hdfs",
+                value_deserializer=lambda b: json.loads(b.decode("utf-8")),
+            )
+        except NoBrokersAvailable:
+            print(f"Waiting for Kafka ({i+1}/15)...")
+            time.sleep(5)
+    raise RuntimeError("Kafka not available after retries")
 
 
 def get_hdfs() -> InsecureClient:
-    return InsecureClient(HDFS_URL, user="root")
+    client = InsecureClient(HDFS_URL, user="root")
+    for i in range(15):
+        try:
+            client.list("/")
+            return client
+        except Exception:
+            print(f"Waiting for HDFS ({i+1}/15)...")
+            time.sleep(5)
+    raise RuntimeError("HDFS not available after retries")
 
 
 def _local_rel_paths() -> set[str]:
@@ -52,7 +72,6 @@ def _local_rel_paths() -> set[str]:
 
 
 def cleanup_hdfs_extraneous_files() -> int:
-    """Delete files in HDFS_DIR that are not present locally under LOCAL_DATA_DIR."""
     hdfs = get_hdfs()
     hdfs.makedirs(HDFS_DIR)
 
@@ -64,8 +83,6 @@ def cleanup_hdfs_extraneous_files() -> int:
     except Exception as e:
         raise RuntimeError(f"Failed to list HDFS dir {HDFS_DIR}: {e}")
 
-    # Only delete files at top-level and 1-level deep paths that we uploaded.
-    # (Keeps behavior safe and predictable.)
     for name, status in hdfs_listing:
         hdfs_path = f"{HDFS_DIR.rstrip('/')}/{name}"
         if status.get("type") != "FILE":
@@ -109,7 +126,6 @@ def produce_all_files() -> int:
     producer.flush()
     producer.close()
 
-    # Sentinel to let consumer know when to stop.
     sentinel = {
         "type": "_DONE_",
         "ts_ms": int(time.time() * 1000),

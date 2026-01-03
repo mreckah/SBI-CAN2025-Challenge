@@ -214,11 +214,25 @@ services:
       timeout: 10s
       retries: 3
 
+  chromadb:
+    image: chromadb/chroma:0.5.0
+    container_name: chromadb
+    volumes:
+      - chroma_data:/chroma/chroma
+    ports:
+      - "8000:8000"
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+    networks:
+      - db-net
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
   postgres_data:
   grafana_data:
+  chroma_data:
 
 networks:
   hadoop-net:

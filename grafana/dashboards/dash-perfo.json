@@ -1,0 +1,1056 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 6,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "Total goals scored by top players",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "metric",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  'Total Goals' as metric,\n  SUM(fp.goals) as value\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Goals",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "Total assists by top players",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 2
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "metric",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  'Total Assists' as metric,\n  SUM(fp.assists) as value\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Assists",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "Total number of players in database",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "metric",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  'Total Players' as metric,\n  COUNT(DISTINCT fp.player_id) as value\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Players",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "Average performance rating across all players",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 7.5
+              },
+              {
+                "color": "red",
+                "value": 9
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "metric",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  'Avg Performance Rating' as metric,\n  AVG(fp.performance_rating) as value\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0",
+          "refId": "A"
+        }
+      ],
+      "title": "Avg Performance Rating",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "position_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  pos.position_name as metric,\n  AVG(fp.performance_rating) as value\nFROM fact_performance fp\nJOIN dim_position pos ON fp.position_id = pos.position_id\nJOIN dim_player p ON fp.player_id = p.player_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nGROUP BY pos.position_name\nORDER BY value DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Rating by Position",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "player_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  p.player_name as metric,\n  fp.goal_contributions as value\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nORDER BY fp.goal_contributions DESC\nLIMIT 10",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 10 Players by Goal Contributions",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "country_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  c.country_name as metric,\n  COUNT(*) as value\nFROM fact_performance fp\nJOIN dim_country c ON fp.country_id = c.country_id\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nGROUP BY c.country_name\nORDER BY value DESC\nLIMIT 10",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Players by Country",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 12
+      },
+      "id": 13,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "position_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  pos.position_name as metric,\n  COUNT(*) as value\nFROM fact_performance fp\nJOIN dim_position pos ON fp.position_id = pos.position_id\nJOIN dim_player p ON fp.player_id = p.player_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nGROUP BY pos.position_name\nORDER BY value DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Players Distribution by Position",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 5,
+        "y": 12
+      },
+      "id": 12,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "country_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  c.country_name as metric,\n  COUNT(DISTINCT fp.player_id) as value\nFROM fact_performance fp\nJOIN dim_country c ON fp.country_id = c.country_id\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\n  AND c.country_name IN (\n    SELECT c2.country_name \n    FROM fact_performance fp2\n    JOIN dim_country c2 ON fp2.country_id = c2.country_id\n    GROUP BY c2.country_name\n    ORDER BY COUNT(DISTINCT fp2.player_id) DESC\n    LIMIT 5\n  )\nGROUP BY c.country_name\nORDER BY value DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 5 Countries by Player Count",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 12
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "position_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  0 as time,\n  pos.position_name as metric,\n  COUNT(*) as value\nFROM fact_performance fp\nJOIN dim_position pos ON fp.position_id = pos.position_id\nJOIN dim_player p ON fp.player_id = p.player_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nGROUP BY pos.position_name\nORDER BY value DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Players by Position",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 10,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Performance Rating"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "player_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  ROW_NUMBER() OVER (ORDER BY fp.performance_rating DESC) as \"Rank\",\n  p.player_name as \"Player Name\",\n  c.country_name as \"Country\",\n  p.age as \"Age\",\n  pos.position_name as \"Position\",\n  fp.performance_rating as \"Performance Rating\",\n  fp.goals as \"Goals\",\n  fp.assists as \"Assists\",\n  fp.goal_contributions as \"Total Contributions\",\n  fp.pass_accuracy_pct as \"Pass %\",\n  fp.minutes_played as \"Minutes\",\n  fp.distance_run_km as \"Distance (km)\",\n  fp.tackles as \"Tackles\",\n  fp.interceptions as \"Interceptions\",\n  fp.yellow_cards as \"Yellows\",\n  fp.red_cards as \"Reds\",\n  fp.created_at as \"Updated At\"\nFROM fact_performance fp\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_country c ON fp.country_id = c.country_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nORDER BY fp.performance_rating DESC\nLIMIT 15",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Players Ranking",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 11,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Avg Rating"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0-17027759091",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "country_name",
+          "rawQuery": true,
+          "rawSql": "SELECT \n  c.country_name as \"Country\",\n  COUNT(DISTINCT fp.player_id) as \"Total Players\",\n  AVG(fp.performance_rating) as \"Avg Rating\",\n  SUM(fp.goals) as \"Total Goals\",\n  SUM(fp.assists) as \"Total Assists\",\n  AVG(fp.pass_accuracy_pct) as \"Avg Pass Accuracy %\",\n  SUM(fp.minutes_played) as \"Total Minutes\",\n  SUM(fp.tackles) as \"Tackles\",\n  SUM(fp.interceptions) as \"Interceptions\",\n  SUM(fp.yellow_cards) as \"Yellow Cards\",\n  SUM(fp.red_cards) as \"Red Cards\",\n  MAX(fp.created_at) as \"Updated At\"\nFROM fact_performance fp\nJOIN dim_country c ON fp.country_id = c.country_id\nJOIN dim_player p ON fp.player_id = p.player_id\nJOIN dim_position pos ON fp.position_id = pos.position_id\nWHERE (pos.position_name = '${position:raw}' OR '${position:raw}' = 'All')\n  AND p.age <= ${max_age:raw}\n  AND fp.performance_rating >= ${min_rating:raw}\n  AND fp.minutes_played > 0\nGROUP BY c.country_name\nORDER BY \"Avg Rating\" DESC\nLIMIT 15",
+          "refId": "A"
+        }
+      ],
+      "title": "Country Performance Analysis",
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "30s",
+  "schemaVersion": 41,
+  "tags": [
+    "football",
+    "africa",
+    "can2025",
+    "analytics",
+    "performance"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "label": "Position",
+        "name": "position",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "All"
+          },
+          {
+            "selected": false,
+            "text": "Forward",
+            "value": "Forward"
+          },
+          {
+            "selected": false,
+            "text": "Midfielder",
+            "value": "Midfielder"
+          },
+          {
+            "selected": false,
+            "text": "Defender",
+            "value": "Defender"
+          },
+          {
+            "selected": false,
+            "text": "Goalkeeper",
+            "value": "Goalkeeper"
+          }
+        ],
+        "query": "SELECT position_name as __text, position_name as __value FROM dim_position UNION ALL SELECT 'All' as __text, 'All' as __value ORDER BY __text",
+        "refresh": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "28",
+          "value": "28"
+        },
+        "label": "Max Age",
+        "name": "max_age",
+        "options": [
+          {
+            "selected": false,
+            "text": "23",
+            "value": "23"
+          },
+          {
+            "selected": true,
+            "text": "28",
+            "value": "28"
+          },
+          {
+            "selected": false,
+            "text": "32",
+            "value": "32"
+          },
+          {
+            "selected": false,
+            "text": "99",
+            "value": "99"
+          }
+        ],
+        "query": "23,28,32,99",
+        "refresh": 1,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "8.0",
+          "value": "8.0"
+        },
+        "label": "Min Rating",
+        "name": "min_rating",
+        "options": [
+          {
+            "selected": false,
+            "text": "7.0",
+            "value": "7.0"
+          },
+          {
+            "selected": false,
+            "text": "7.5",
+            "value": "7.5"
+          },
+          {
+            "selected": true,
+            "text": "8.0",
+            "value": "8.0"
+          },
+          {
+            "selected": false,
+            "text": "8.5",
+            "value": "8.5"
+          }
+        ],
+        "query": "7.0,7.5,8.0,8.5",
+        "refresh": 1,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h"
+    ]
+  },
+  "timezone": "",
+  "title": "CAN 2025 - Player Performance Analytics",
+  "uid": "can2025-player-performance-analytics",
+  "version": 5
+}

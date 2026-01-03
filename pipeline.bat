@@ -14,7 +14,7 @@ exit /b 1
 :driver_ok
 :: 2. Start Infrastructure
 echo [1/4] Starting Docker containers (Cleaning Cache)...
-::docker-compose down -v
+:: docker-compose down -v
 :: docker-compose up -d --build
 
 :: Force restart data-pipeline to ensure it runs with the latest code/requirements

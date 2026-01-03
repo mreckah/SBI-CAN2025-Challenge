@@ -2,6 +2,10 @@ import streamlit as st
 import os
 import glob
 import chromadb
+import io
+import base64
+import re
+from gtts import gTTS
 from dotenv import load_dotenv
 from langchain_community.document_loaders import Docx2txtLoader, TextLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -10,7 +14,6 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 
-# --- Configuration ---
 load_dotenv()
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 CHROMA_HOST = os.getenv("CHROMA_HOST", "localhost")
@@ -19,13 +22,12 @@ DB_DIR = "chroma_db"
 DOCS_DIR = "docs"
 
 st.set_page_config(page_title="DeepSeek Chat", layout="wide")
-st.title(" DeepSeek Document Chat")
+st.title("DeepSeek Document Chat")
 
 # Ensure directories exist
 if not os.path.exists(DOCS_DIR):
     os.makedirs(DOCS_DIR)
 
-# --- 2. RAG Logic ---
 @st.cache_resource
 def get_vectorstore():
     # Load all documents from the docs folder
@@ -108,11 +110,33 @@ with st.sidebar:
     else:
         st.info("No documents found in /docs")
 
-    if st.button("Clear Chat History"):
-        st.session_state.messages = []
-        st.rerun()
+    st.divider()
+    enable_tts = st.checkbox("Speak Answers", value=True)
 
-# --- 3. Chat Interface Logic ---
+def clean_text_for_speech(text):
+    text = re.sub(r'\*+', '', text)
+    text = re.sub(r'#+', '', text)
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    text = re.sub(r'(\d+)\.', r'\1', text)
+    return text.strip()
+
+def speak_text_hidden(text):
+    try:
+        clean_text = clean_text_for_speech(text)
+        tts = gTTS(text=clean_text, lang='en')
+        fp = io.BytesIO()
+        tts.write_to_fp(fp)
+        fp.seek(0)
+        audio_base64 = base64.b64encode(fp.read()).decode()
+        audio_html = f"""
+            <audio autoplay="true" style="display:none;">
+                <source src="data:audio/mp3;base64,{audio_base64}" type="audio/mp3">
+            </audio>
+        """
+        st.components.v1.html(audio_html, height=0)
+    except Exception as e:
+        st.error(f"TTS Error: {e}")
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -152,9 +176,11 @@ if vectorstore:
                     full_response = response["result"]
                     st.markdown(full_response)
                     
-                    # Add assistant message to history
+                    if enable_tts:
+                        speak_text_hidden(full_response)
+                    
                     st.session_state.messages.append({"role": "assistant", "content": full_response})
                 except Exception as e:
                     st.error(f"Error calling AI: {e}")
 else:
-    st.warning("👈 Please add some documents to the `/docs` folder to start chatting.")
+    st.warning("Please add some documents to the /docs folder to start chatting.")

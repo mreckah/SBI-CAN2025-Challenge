@@ -15,7 +15,8 @@ exit /b 1
 :: 2. Start Infrastructure
 echo [1/4] Starting Docker containers (Cleaning Cache)...
 ::docker-compose down -v
-::docker-compose up -d --build
+:: docker-compose up -d --build
+
 :: Force restart data-pipeline to ensure it runs with the latest code/requirements
 docker-compose restart data-pipeline
 if errorlevel 1 (
@@ -26,8 +27,13 @@ if errorlevel 1 (
 :: 3. Wait for Data Ingestion to finish
 echo [2/4] Waiting for Data Pipeline to complete...
 :wait_ingestion
-for /f "tokens=*" %%i in ('docker inspect -f "{{.State.Status}}" data-pipeline') do set STATUS=%%i
+set STATUS=not_found
+for /f "tokens=*" %%i in ('docker inspect -f "{{.State.Status}}" data-pipeline 2^>nul') do set STATUS=%%i
 if "!STATUS!"=="exited" goto spark_job
+if "!STATUS!"=="not_found" (
+    echo [ERROR] data-pipeline container not found. Build might have failed.
+    exit /b 1
+)
 echo Ingestion in progress (Status: !STATUS!)...
 timeout /t 5 /nobreak > nul
 goto wait_ingestion

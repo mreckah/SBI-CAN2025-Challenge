@@ -81,6 +81,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: data-pipeline
     container_name: data-pipeline
     depends_on:
       kafka:
@@ -100,7 +101,10 @@ services:
       - hadoop-net
 
   spark-master:
-    image: apache/spark:3.4.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: spark-base
     command: >
       /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
       -h spark-master
@@ -131,7 +135,10 @@ services:
       retries: 3
 
   spark-worker:
-    image: apache/spark:3.4.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: spark-base
     command: >
       /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
       spark://spark-master:7077

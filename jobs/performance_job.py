@@ -4,6 +4,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import *
 from pyspark.sql.window import Window
+from great_expectations.dataset.sparkdf_dataset import SparkDFDataset
 
 
 def _env(name: str, default: str) -> str:
@@ -68,6 +69,44 @@ def read_raw_data(spark: SparkSession, hdfs_path: str):
     
     print(f"Total records read: {df.count()}")
     return df
+
+
+def validate_data(df):
+    print("Validating data with Great Expectations...")
+    
+    ge_df = SparkDFDataset(df)
+    
+    # 1. Column existence
+    required_columns = ["Player_Name", "Country", "Age", "Position", "Performance_Rating"]
+    for col in required_columns:
+        ge_df.expect_column_to_exist(col)
+    
+    # 2. Null checks
+    ge_df.expect_column_values_to_not_be_null("Player_Name")
+    ge_df.expect_column_values_to_not_be_null("Country")
+    
+    # 3. Value ranges
+    ge_df.expect_column_values_to_be_between("Age", 15, 50)
+    ge_df.expect_column_values_to_be_between("Performance_Rating", 0, 10)
+    ge_df.expect_column_values_to_be_between("Minutes_Played", 0)
+    ge_df.expect_column_values_to_be_between("Goals", 0)
+    
+    # 4. categorical checks
+    valid_positions = ["Forward", "Midfielder", "Defender", "Goalkeeper", "FW", "MF", "DF", "GK"]
+    ge_df.expect_column_values_to_be_in_set("Position", valid_positions)
+    
+    validation_results = ge_df.validate()
+    
+    if validation_results["success"]:
+        print("Data quality validation PASSED!")
+    else:
+        print("Data quality validation FAILED!")
+        # Print summary of failed expectations
+        for result in validation_results["results"]:
+            if not result["success"]:
+                print(f" - FAILED: {result['expectation_config']['expectation_type']} on {result['expectation_config']['kwargs'].get('column')}")
+    
+    return validation_results["success"]
 
 
 def clean_data(df):
@@ -312,6 +351,11 @@ def main():
     
     try:
         raw_df = read_raw_data(spark, f"{HDFS_URL}{HDFS_DATA_PATH}")
+        
+        # Data Quality Check
+        is_valid = validate_data(raw_df)
+        if not is_valid:
+            print("WARNING: Data quality issues found, but proceeding anyway.")
         
         clean_df = clean_data(raw_df)
         

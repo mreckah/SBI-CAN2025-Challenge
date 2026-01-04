@@ -13,6 +13,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
+from langchain.prompts import PromptTemplate
 
 load_dotenv()
 API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -170,7 +171,24 @@ if vectorstore:
                         temperature=0.7,
                         default_headers={"HTTP-Referer": "http://localhost:8501"}
                     )
-                    qa_chain = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
+                    
+                    template = """Answer the question directly and briefly using only the provided context. 
+                    - Keep it simple and clear.
+                    - Do not provide long explanations or extra notes.
+                    - If you don't know, just say so.
+                    
+                    Context: {context}
+                    Question: {question}
+                    Answer:"""
+                    
+                    QA_PROMPT = PromptTemplate(template=template, input_variables=["context", "question"])
+                    
+                    qa_chain = RetrievalQA.from_chain_type(
+                        llm=llm, 
+                        chain_type="stuff", 
+                        retriever=retriever,
+                        chain_type_kwargs={"prompt": QA_PROMPT}
+                    )
                     
                     response = qa_chain.invoke(prompt)
                     full_response = response["result"]

@@ -3,8 +3,6 @@
 <div align="center">
   <img src="assets/logo.png" alt="SBI CAN2025 Logo" width="250"/>
 </div>
-
-## Project Overview
 This project builds a full data pipeline for the **SBI CAN 2025 Challenge** to process and visualize AFCON player stats. It moves data from raw CSVs to dashboards using **Kafka, Spark, gx, Airflow, and Postgres**.
 
 ---

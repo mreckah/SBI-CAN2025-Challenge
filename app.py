@@ -22,19 +22,16 @@ CHROMA_PORT = os.getenv("CHROMA_PORT", "8000")
 DB_DIR = "chroma_db"
 DOCS_DIR = "docs"
 
-st.set_page_config(page_title="DeepSeek Chat", layout="wide")
-st.title("DeepSeek Document Chat")
+st.set_page_config(page_title="CAN25 Chat", layout="wide")
+st.title("CAN25 Chat")
 
-# Ensure directories exist
 if not os.path.exists(DOCS_DIR):
     os.makedirs(DOCS_DIR)
 
 @st.cache_resource
 def get_vectorstore():
-    # Load all documents from the docs folder
     documents = []
     
-    # Process files in docs directory
     for file_path in glob.glob(os.path.join(DOCS_DIR, "*")):
         try:
             if file_path.endswith(".docx"):
@@ -52,15 +49,12 @@ def get_vectorstore():
     if not documents:
         return None
 
-    # Split
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     chunks = text_splitter.split_documents(documents)
 
-    # Vectorize (Free local embeddings)
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
     try:
-        # Try connecting to Chroma server if configured
         if CHROMA_HOST:
             vectorstore = Chroma.from_documents(
                 chunks,
@@ -88,7 +82,6 @@ def add_to_vectorstore(file_content, file_name):
     with open(temp_path, "wb") as f:
         f.write(file_content)
     
-    # Clear cache to force reload of all docs including the new one
     st.cache_resource.clear()
     st.rerun()
 

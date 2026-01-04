@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.providers.docker.operators.docker import DockerOperator
+from docker.types import Mount
 
 default_args = {
     'owner': 'airflow',
@@ -13,6 +13,9 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
+# Base path for host mounts
+BASE_PATH = "C:\\Users\\Mreckah\\Desktop\\sbi-can2025-pipeline"
+
 with DAG(
     'sbi_afcon_pipeline',
     default_args=default_args,
@@ -21,22 +24,47 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    # Task 1: Data Ingestion (Restarting the container to run data_pipeline.py)
-    # Note: On Windows with Docker Desktop, communicating with the socket from inside a container 
-    # might require the docker CLI to be installed or using DockerOperator.
-    # Since we want to mirror pipeline.bat which runs:
-    # docker-compose restart data-pipeline
-    
-    ingest_data = BashOperator(
+    # Task 1: Data Ingestion
+    ingest_data = DockerOperator(
         task_id='ingest_data',
-        bash_command='echo "Triggering ingestion..." && sleep 5', # Placeholder if docker CLI isn't in image
+        image='sbi-can2025-pipeline-data-pipeline:latest',
+        api_version='auto',
+        auto_remove=True,
+        docker_url="unix://var/run/docker.sock",
+        network_mode="pipeline-net",
+        mount_tmp_dir=False,
+        environment={
+            'KAFKA_BOOTSTRAP_SERVERS': 'kafka:29092',
+            'KAFKA_TOPIC': 'can2025_data_files',
+            'HDFS_URL': 'http://namenode:9870',
+            'HDFS_DIR': '/data'
+        },
+        mounts=[
+            Mount(source=f'{BASE_PATH}\\data', target='/data', type='bind', read_only=True)
+        ]
     )
 
     # Task 2: Spark ETL Job
-    # Mirrors: docker exec spark-master /opt/spark/bin/spark-submit ...
-    spark_etl = BashOperator(
+    spark_etl = DockerOperator(
         task_id='spark_etl',
-        bash_command='echo "Running Spark ETL..." && sleep 5', # Placeholder
+        image='sbi-can2025-pipeline-spark-master:latest',
+        api_version='auto',
+        auto_remove=True,
+        docker_url="unix://var/run/docker.sock",
+        network_mode="pipeline-net",
+        mount_tmp_dir=False,
+        command="/opt/spark/bin/spark-submit --master spark://spark-master:7077 --jars /opt/spark/jars/postgresql-42.6.0.jar --driver-class-path /opt/spark/jars/postgresql-42.6.0.jar /jobs/performance_job.py",
+        mounts=[
+            Mount(source=f'{BASE_PATH}\\jobs', target='/jobs', type='bind', read_only=True),
+            Mount(source=f'{BASE_PATH}\\postgresql-42.6.0.jar', target='/opt/spark/jars/postgresql-42.6.0.jar', type='bind', read_only=True)
+        ],
+        environment={
+            'PG_HOST': 'postgres',
+            'PG_PORT': '5432',
+            'PG_DB': 'can2025_gold',
+            'PG_USER': 'admin',
+            'PG_PASSWORD': 'password123'
+        }
     )
 
     ingest_data >> spark_etl

@@ -18,7 +18,7 @@ services:
       - "9870:9870"  # HDFS Web UI
       - "9000:9000"  # HDFS NameNode
     networks:
-      - hadoop-net
+      - main-net
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9870/"]
       interval: 30s
@@ -40,7 +40,7 @@ services:
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     networks:
-      - hadoop-net
+      - main-net
 
   zookeeper:
     image: zookeeper:3.8.1
@@ -50,7 +50,7 @@ services:
     environment:
       ZOO_4LW_COMMANDS_WHITELIST: "*"
     networks:
-      - kafka-net
+      - main-net
     healthcheck:
       test: ["CMD", "zkServer.sh", "status"]
       interval: 30s
@@ -70,7 +70,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
     networks:
-      - kafka-net
+      - main-net
     deploy:
       resources:
         limits:
@@ -97,8 +97,7 @@ services:
     volumes:
       - ./data:/data:ro
     networks:
-      - kafka-net
-      - hadoop-net
+      - main-net
 
   spark-master:
     build:
@@ -125,9 +124,7 @@ services:
       - ./postgresql-42.6.0.jar:/opt/spark/jars/postgresql-42.6.0.jar:ro
       - ./data:/data:ro
     networks:
-      - spark-net
-      - hadoop-net
-      - db-net
+      - main-net
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/"]
       interval: 30s
@@ -157,9 +154,7 @@ services:
     volumes:
       - ./postgresql-42.6.0.jar:/opt/spark/jars/postgresql-42.6.0.jar:ro
     networks:
-      - spark-net
-      - hadoop-net
-      - db-net
+      - main-net
     deploy:
       replicas: 2
       resources:
@@ -177,10 +172,11 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
     ports:
       - "5432:5432"
     networks:
-      - db-net
+      - main-net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d ${POSTGRES_DB:-can2025_gold}"]
       interval: 10s
@@ -207,7 +203,7 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - db-net
+      - main-net
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
       interval: 30s
@@ -226,18 +222,42 @@ services:
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
     networks:
-      - db-net
+      - main-net
     depends_on:
       postgres:
         condition: service_healthy
-    command: >
-      bash -c "airflow db init &&
+    command: |
+      bash -c "
+      python3 -c \"
+      import psycopg2
+      from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+      try:
+          conn = psycopg2.connect(
+              host='postgres',
+              user='${POSTGRES_USER:-admin}',
+              password='${POSTGRES_PASSWORD:-password123}',
+              dbname='postgres'
+          )
+          conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+          cur = conn.cursor()
+          cur.execute(\\\"SELECT 1 FROM pg_database WHERE datname = 'airflow'\\\")
+          if not cur.fetchone():
+              cur.execute(\\\"CREATE DATABASE airflow\\\")
+          cur.close()
+          conn.close()
+          print('Database airflow ensured.')
+      except Exception as e:
+          print(f'Database initialization failed: {e}')
+          exit(1)
+      \" &&
+      airflow db migrate &&
       airflow users create --username admin --firstname admin --lastname admin --role Admin --email admin@example.com --password admin"
 
   airflow-webserver:
     image: apache/airflow:2.7.1
     container_name: airflow_webserver
     restart: always
+    command: webserver
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -253,10 +273,7 @@ services:
     ports:
       - "8085:8080"
     networks:
-      - db-net
-      - spark-net
-      - kafka-net
-      - hadoop-net
+      - main-net
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
@@ -267,6 +284,7 @@ services:
     image: apache/airflow:2.7.1
     container_name: airflow_scheduler
     restart: always
+    command: scheduler
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -279,10 +297,7 @@ services:
       - ./plugins:/opt/airflow/plugins
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - db-net
-      - spark-net
-      - kafka-net
-      - hadoop-net
+      - main-net
 
   chromadb:
     image: chromadb/chroma:0.5.0
@@ -295,7 +310,7 @@ services:
       - IS_PERSISTENT=TRUE
       - PERSIST_DIRECTORY=/chroma/chroma
     networks:
-      - db-net
+      - main-net
 
 volumes:
   hadoop_namenode:
@@ -305,11 +320,6 @@ volumes:
   chroma_data:
 
 networks:
-  hadoop-net:
+  main-net:
     driver: bridge
-  kafka-net:
-    driver: bridge
-  spark-net:
-    driver: bridge
-  db-net:
-    driver: bridge
+    name: pipeline-net

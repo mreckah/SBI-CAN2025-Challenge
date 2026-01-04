@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.env
+
+# Distribution / Build
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+
+# OS Generated
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Airflow
+logs/
+airflow-worker.pid
+airflow-webserver.pid
+airflow-scheduler.pid
+standalone_admin_password.txt
+
+# Docker / Project Specific
+chroma_data/
+grafana/provisioning/datasources/datasources.yml  # If secrets are here

@@ -39,5 +39,6 @@ airflow-scheduler.pid
 standalone_admin_password.txt
 
 # Docker / Project Specific
-chroma_data/
+chroma_db/
+temp_docs/
 grafana/provisioning/datasources/datasources.yml  # If secrets are here

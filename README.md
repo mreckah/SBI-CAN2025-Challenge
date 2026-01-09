@@ -4,6 +4,7 @@
   <img src="assets/logo.png" alt="SBI CAN2025 Logo" width="250"/>
 </div>
 ---
+
 ## Pipeline Architecture 
 
 This architecture shows how data flows from raw sources through processing, storage, and visualization, ensuring clean, reliable, and actionable football insights.

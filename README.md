@@ -3,10 +3,9 @@
 <div align="center">
   <img src="assets/logo.png" alt="SBI CAN2025 Logo" width="250"/>
 </div>
-This project builds a full data pipeline for the **SBI CAN 2025 Challenge** to process and visualize AFCON player stats. It moves data from raw CSVs to dashboards using **Kafka, Spark, gx, Airflow, and Postgres**.
-
 ---
 ## Pipeline Architecture 
+
 This architecture shows how data flows from raw sources through processing, storage, and visualization, ensuring clean, reliable, and actionable football insights.
 ![Airflow DAG](assets/sbi-can-2025.gif)
 ---
